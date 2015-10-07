@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">LibApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_search_for_book">Search For Item</string>
+
+    <string-array name="searchFieldItems">
+        <item>All Fields</item>
+        <item>Tittle</item>
+        <item>Author</item>
+        <item>ISBN</item>
+        <item>Subject</item>
+    </string-array>
+    <string name="title_activity_reservation">Reservation</string>
+    <string name="searhField">Search Field</string>
+    <string name="searchPhrase">Type Words or Phrase</string>
+    <string name="searchButton">Go</string>
+    <string name="title_activity_add_book">AddBookActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_book_list">All Books</string>
+    <string name="title_activity_loan_list">LoanList</string>
+    <string name="title_activity_book_details">Book Details</string>
+    <string name="title_activity_loan_details">Loan Details</string>
+</resources>

@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="za.ac.cput.libapp.app.view.AddBookActivity"
+                android:id="@+id/layoutForBook">
+
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Tittle"
+            android:id="@+id/txtDisplay" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="75dp"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView3" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:text="Add Book"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtFldTittle" android:layout_below="@+id/txtDisplay" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="ISBN"
+            android:id="@+id/textView2" android:layout_below="@+id/txtFldTittle" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtFldISBN" android:layout_below="@+id/textView2" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Subject"
+            android:id="@+id/textView4" android:layout_below="@+id/txtFldISBN" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtFldSubject" android:layout_below="@+id/textView4" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/btnSaveBook" android:layout_below="@+id/txtFldSubject" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="32dp"/>
+</RelativeLayout>
