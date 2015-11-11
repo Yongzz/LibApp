@@ -1,18 +1,17 @@
-package za.ac.cput.libapp.app.model;
+package za.ac.cput.libapp.app.domain.Impl;
+
+import java.io.Serializable;
 
 /**
- * Created by Yongama on 2015-05-19.
+ * Created by student on 2015/04/17.
  */
-public class Member {
-
+public class Member implements Serializable {
     private Long id;
-
 
     private String member_id;
 
     private String firstName;
     private String lastName;
-
     private Address address;
 
     private Member(){}
@@ -89,5 +88,21 @@ public class Member {
         public Member build(){
             return new Member(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Member member = (Member) o;
+
+        return !(id != null ? !id.equals(member.id) : member.id != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

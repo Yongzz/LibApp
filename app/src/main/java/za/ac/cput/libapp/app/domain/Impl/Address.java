@@ -1,11 +1,13 @@
-package za.ac.cput.libapp.app.model;
+package za.ac.cput.libapp.app.domain.Impl;
+
+import java.io.Serializable;
 
 /**
  * Created by Yongama on 2015-04-24.
  */
-
-public class Address{
-
+public class Address implements Serializable{
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)*/
     private int houseNumber;
     private String street;
     private String suburb;

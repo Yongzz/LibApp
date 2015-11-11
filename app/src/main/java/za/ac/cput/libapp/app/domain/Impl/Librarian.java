@@ -1,11 +1,12 @@
-package za.ac.cput.libapp.app.model;
+package za.ac.cput.libapp.app.domain.Impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Yongama on 2015/09/24.
+ * Createisgetd by student on 2015/04/17.
  */
-public class Librarian {
+public class Librarian implements Serializable {
 
     private Long ID;
     private String lName;
@@ -92,13 +93,27 @@ public class Librarian {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Librarian librarian = (Librarian) o;
+
+        if (ID != null ? !ID.equals(librarian.ID) : librarian.ID != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return ID != null ? ID.hashCode() : 0;
+    }
+
+    @Override
     public String toString() {
         return "Librarian{" +
-                "ID=" + ID +
-                ", lName='" + lName + '\'' +
-                ", fName='" + fName + '\'' +
-                ", librarianID='" + librarianID + '\'' +
-                ", passoword='" + passoword + '\'' +
+                "id=" + ID +
+                ", LName='" + lName + '\'' +
                 '}';
     }
 }

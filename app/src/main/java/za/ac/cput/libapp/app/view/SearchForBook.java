@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import za.ac.cput.libapp.app.R;
-import za.ac.cput.libapp.app.model.Book;
+import za.ac.cput.libapp.app.domain.Impl.Book;
 import za.ac.cput.libapp.app.services.BookService;
 import za.ac.cput.libapp.app.services.Impl.BookServiceImpl;
 

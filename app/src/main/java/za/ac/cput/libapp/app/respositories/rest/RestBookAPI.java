@@ -2,7 +2,7 @@ package za.ac.cput.libapp.app.respositories.rest;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-import za.ac.cput.libapp.app.model.Book;
+import za.ac.cput.libapp.app.domain.Impl.Book;
 import za.ac.cput.libapp.app.respositories.RestAPI;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class RestBookAPI implements RestAPI<Book,Long> {
 
     @Override
     public String put(Book entity) {
-        final String url = BASE_URL+"book/update/"+entity.getID().toString();
+        final String url = BASE_URL+"book/update/"+entity.getId().toString();
         HttpEntity<Book> requestEntity = new HttpEntity<Book>(entity, requestHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
         String result = responseEntity.getBody();
@@ -55,7 +55,7 @@ public class RestBookAPI implements RestAPI<Book,Long> {
 
     @Override
     public String delete(Book entity) {
-        final String url = BASE_URL+"book/delete/"+entity.getID().toString();
+        final String url = BASE_URL+"book/delete/"+entity.getId().toString();
         HttpEntity<Book> requestEntity = new HttpEntity<Book>(entity, requestHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
         return responseEntity.getBody();

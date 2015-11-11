@@ -1,14 +1,15 @@
-package za.ac.cput.libapp.app.model;
+package za.ac.cput.libapp.app.domain.Impl;
 
 import java.io.Serializable;
 
 /**
- * Created by Yongama on 2015-05-19.
+ * Created by student on 2015/04/17.
  */
-public class Loan implements Serializable{
-    private Long ID;
+public class Loan implements Serializable {
+    private Long Id;
     private String loanDate;
     private String dueDate;
+
     private Member member;
     private Librarian librarian;
     private Copy copy;
@@ -16,7 +17,7 @@ public class Loan implements Serializable{
     private Loan(){}
     public Loan(Builder builder){
 
-        ID = builder.ID;
+        Id = builder.Id;
         loanDate = builder.loanDate;
         member = builder.member;
         librarian= builder.librarian;
@@ -25,8 +26,8 @@ public class Loan implements Serializable{
 
 
     }
-    public Long getresID() {
-        return ID;
+    public Long getId() {
+        return Id;
     }
 
     public String getLoanDate() {
@@ -51,7 +52,7 @@ public class Loan implements Serializable{
 
     public static class Builder{
 
-        Long ID;
+        Long Id;
         private String loanDate;
         private String dueDate;
         private Member member;
@@ -63,8 +64,8 @@ public class Loan implements Serializable{
             this.member = member;
         }
 
-        public Builder resID(Long value){
-            this.ID = value;
+        public Builder Id(Long value){
+            this.Id = value;
             return this;
         }
 
@@ -103,5 +104,29 @@ public class Loan implements Serializable{
             return new Loan(this);
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Loan loan = (Loan) o;
+
+        return !(Id != null ? !Id.equals(loan.Id) : loan.Id != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Id != null ? Id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "id=" + Id +
+                ", LoanDate='" + loanDate + '\'' +
+                '}';
     }
 }

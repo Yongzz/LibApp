@@ -2,7 +2,7 @@ package za.ac.cput.libapp.app.respositories.rest;
 
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-import za.ac.cput.libapp.app.model.Loan;
+import za.ac.cput.libapp.app.domain.Impl.Loan;
 import za.ac.cput.libapp.app.respositories.RestAPI;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Yongama on 2015/10/04.
  */
-public class RestLoanAPI  implements RestAPI<Loan,Long>{
+public class RestLoanAPI  implements RestAPI<Loan,Long> {
 
     final String BASE_URL="http://librarysystem-librarysystem.rhcloud.com/library/";
 
@@ -47,7 +47,7 @@ public class RestLoanAPI  implements RestAPI<Loan,Long>{
 
     @Override
     public String put(Loan entity) {
-        final String url = BASE_URL+"loan/update/"+entity.getresID().toString();
+        final String url = BASE_URL+"loan/update/"+entity.getId().toString();
         HttpEntity<Loan> requestEntity = new HttpEntity<Loan>(entity, requestHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
         String result = responseEntity.getBody();
@@ -56,7 +56,7 @@ public class RestLoanAPI  implements RestAPI<Loan,Long>{
 
     @Override
     public String delete(Loan entity) {
-        final String url = BASE_URL+"loan/delete/"+entity.getresID().toString();
+        final String url = BASE_URL+"loan/delete/"+entity.getId().toString();
         HttpEntity<Loan> requestEntity = new HttpEntity<Loan>(entity, requestHeaders);
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
         return responseEntity.getBody();

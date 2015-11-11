@@ -1,9 +1,7 @@
 package za.ac.cput.libapp.app.services.Impl;
 
-import za.ac.cput.libapp.app.model.Book;
-import za.ac.cput.libapp.app.model.Loan;
+import za.ac.cput.libapp.app.domain.Impl.Loan;
 import za.ac.cput.libapp.app.respositories.RestAPI;
-import za.ac.cput.libapp.app.respositories.rest.RestBookAPI;
 import za.ac.cput.libapp.app.respositories.rest.RestLoanAPI;
 import za.ac.cput.libapp.app.services.LoanService;
 

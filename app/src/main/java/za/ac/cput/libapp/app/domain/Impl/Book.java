@@ -1,21 +1,26 @@
-package za.ac.cput.libapp.app.model;
+package za.ac.cput.libapp.app.domain.Impl;
 
+
+
+import za.ac.cput.libapp.app.domain.LibraryItem;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class Book implements Serializable {
-    private Long ID;
-    private String tittle;
-    private String subject;
+/**
+ * Created by student on 2015/04/17.
+ */
+public class Book extends LibraryItem implements Serializable {
+
+   // @Column(unique = true)
     private String ISBN;
     private Author author;
-    private List<Copy> copies;
     private Publisher publisher;
+    private List<Copy> copies;
 
     private Book(){}
     public Book(Builder builder){
-        this.ID = builder.ID;
+        this.id = builder.id;
         tittle = builder.tittle;
         copies = builder.copies;
         subject = builder.subject;
@@ -24,23 +29,11 @@ public class Book implements Serializable {
         publisher =builder.publisher;
     }
 
-    public Long getID() {
-        return ID;
-    }
-
-    public String getTittle() {
-        return tittle;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
     public String getISBN() {
         return ISBN;
     }
 
-    public Author getAuthor() {
+    public Author getAuthors() {
         return author;
     }
 
@@ -52,8 +45,12 @@ public class Book implements Serializable {
         return publisher;
     }
 
+    public Author getAuthor() {
+        return author;
+    }
+
     public static class Builder{
-        private Long ID;
+        private Long id;
         private String tittle;
         private String subject;
         private String ISBN;
@@ -66,8 +63,8 @@ public class Book implements Serializable {
             this.ISBN = ISBN;
         }
 
-        public Builder ID(Long value){
-            this.ID = value;
+        public Builder Id(Long value){
+            this.id = value;
             return this;
         }
         public Builder ISBN(String value){
@@ -100,7 +97,7 @@ public class Book implements Serializable {
         }
 
         public Builder copy(Book value){
-            this.ID = value.ID;
+            this.id = value.id;
             this.tittle = value.tittle;
             this.subject = value.subject;
             this.ISBN = value.ISBN;
@@ -121,20 +118,20 @@ public class Book implements Serializable {
 
         Book book = (Book) o;
 
-        if (ID != null ? !ID.equals(book.ID) : book.ID != null) return false;
+        if (id != null ? !id.equals(book.id) : book.id != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return ID != null ? ID.hashCode() : 0;
+        return id != null ? id.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Book{" +
-                "ID=" + ID +
+                "id=" + id +
                 ", tittle='" + tittle + '\'' +
                 '}';
     }

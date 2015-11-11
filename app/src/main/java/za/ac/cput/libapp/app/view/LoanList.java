@@ -15,8 +15,7 @@ import android.widget.TextView;
 import za.ac.cput.libapp.app.EntryAdapter;
 import za.ac.cput.libapp.app.ListEntry;
 import za.ac.cput.libapp.app.R;
-import za.ac.cput.libapp.app.model.Book;
-import za.ac.cput.libapp.app.model.Loan;
+import za.ac.cput.libapp.app.domain.Impl.Loan;
 import za.ac.cput.libapp.app.services.Impl.LoanServiceImpl;
 import za.ac.cput.libapp.app.services.LoanService;
 

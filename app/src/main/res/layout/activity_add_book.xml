@@ -15,14 +15,9 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Tittle"
-            android:id="@+id/txtDisplay" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_marginTop="75dp"/>
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView3" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:text="Add Book"/>
+            android:id="@+id/txtDisplay"
+            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -32,20 +27,20 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ISBN"
+            android:text="Author"
             android:id="@+id/textView2" android:layout_below="@+id/txtFldTittle" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtFldISBN" android:layout_below="@+id/textView2" android:layout_alignParentLeft="true"
+            android:id="@+id/txtFldAuthor" android:layout_below="@+id/textView2" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Subject"
-            android:id="@+id/textView4" android:layout_below="@+id/txtFldISBN" android:layout_alignParentLeft="true"
+            android:id="@+id/textView4" android:layout_below="@+id/txtFldAuthor" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <EditText
             android:layout_width="fill_parent"
@@ -56,6 +51,22 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Save"
-            android:id="@+id/btnSaveBook" android:layout_below="@+id/txtFldSubject" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_marginTop="32dp"/>
+            android:id="@+id/btnSaveBook"
+            android:layout_below="@+id/txtFldPublisher" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" android:layout_marginTop="60dp"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Publisher"
+            android:id="@+id/textView3" android:layout_below="@+id/txtFldSubject" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+    <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/txtFldPublisher"
+            android:layout_below="@+id/textView3" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 </RelativeLayout>

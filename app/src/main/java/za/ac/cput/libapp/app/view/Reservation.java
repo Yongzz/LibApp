@@ -10,13 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import za.ac.cput.libapp.app.R;
-import za.ac.cput.libapp.app.model.*;
+import za.ac.cput.libapp.app.domain.Impl.*;
 import za.ac.cput.libapp.app.services.Impl.LoanServiceImpl;
 import za.ac.cput.libapp.app.services.LoanService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 

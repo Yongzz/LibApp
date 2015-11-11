@@ -1,19 +1,16 @@
 package za.ac.cput.libapp.app.view;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
-import android.os.StrictMode;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.StrictMode;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import za.ac.cput.libapp.app.R;
-import za.ac.cput.libapp.app.model.Book;
+import za.ac.cput.libapp.app.domain.Impl.Book;
 import za.ac.cput.libapp.app.services.BookService;
 import za.ac.cput.libapp.app.services.Impl.BookServiceImpl;
 
@@ -23,8 +20,10 @@ import java.util.List;
 
 public class BookList extends Activity implements AdapterView.OnItemClickListener {
 
-    private List<Book> bookList;
+    private List<Book> bookList = new ArrayList<>();
     private static String text;
+    private  List<String> booktitles = new ArrayList<>();
+    private static  int position;
     ArrayAdapter<String> arrayAdapter;
     BookService bookService = new BookServiceImpl();
     public static final int Delete = Menu.FIRST + 1;
@@ -39,13 +38,13 @@ public class BookList extends Activity implements AdapterView.OnItemClickListene
         StrictMode.setThreadPolicy(policy);
 
         final ListView lv = (ListView) findViewById(R.id.lvBooks);
-        List<String> booktitles = new ArrayList<>();
+
 
         bookList  = bookService.findAll();
 
         for (Book b:bookList)
         {
-            booktitles.add(b.getTittle());
+            booktitles.add(b.getTittle()+" : "+b.getId()+"");
         }
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,
                 booktitles );
@@ -62,13 +61,13 @@ public class BookList extends Activity implements AdapterView.OnItemClickListene
 
         for (Book b:bookList)
         {
-            if(b.getTittle().equalsIgnoreCase(text)) {
-                i.putExtra("Id",b.getID()+"");
+            if((b.getTittle()+" : "+b.getId()+"").equalsIgnoreCase(text)) {
+                i.putExtra("Id",b.getId()+"");
                 i.putExtra("isbn",b.getISBN()+"");
                 i.putExtra("title", b.getTittle()+"");
                 i.putExtra("subject", b.getSubject()+"");
-                i.putExtra("author", b.getISBN()+"");
-                i.putExtra("publisher", b.getISBN()+"");
+                i.putExtra("author",(b.getAuthor()!= null)? b.getAuthor().getFName():"");
+                i.putExtra("publisher", (b.getPublisher()!= null)? b.getPublisher().getPublisherName():"");
             }
         }
         startActivity(i);
@@ -78,12 +77,12 @@ public class BookList extends Activity implements AdapterView.OnItemClickListene
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-
-            menu.setHeaderTitle("Options");
-            menu.add(Menu.NONE, Delete, Menu.NONE, "Delete");
-            menu.add(Menu.NONE, Reserve, Menu.NONE, "Issue Loan");
-       /* menu.add("Delete");
-        menu.add("Reserve");*/
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        position = info.position;
+        text = booktitles.get(position);
+        menu.setHeaderTitle(text);
+        menu.add(Menu.NONE, Delete, Menu.NONE, "Delete");
+        menu.add(Menu.NONE, Reserve, Menu.NONE, "Edit");
 
     }
     @Override
@@ -99,20 +98,35 @@ public class BookList extends Activity implements AdapterView.OnItemClickListene
         {
             case Delete:
 
-                for (Book b:bookList)
-                {
-                    if(b.getTittle().equalsIgnoreCase(text));
+                bookList.remove(position);
+                arrayAdapter.notifyDataSetChanged();
+               /* for (Book b:bookList) {
+                    if((b.getTittle()+" : "+b.getId()+"").equalsIgnoreCase(text));
                     {
                         bookService.delete(b);
                     }
                     Toast.makeText(getApplicationContext(),"Successful Deleted a book", Toast.LENGTH_LONG).show();
 
-                }
+                }*/
+                break;
             case Reserve:
-                         final Intent i = new Intent(this,Reservation.class);
-                startActivity(i);
-                /*bookList.remove(text);
-                arrayAdapter.notifyDataSetChanged();*/
+
+                final Intent in = new Intent(this,AddBookActivity.class);
+                for (Book b:bookList)
+                {
+                    if((b.getTittle()+" : "+b.getId()+"").equalsIgnoreCase(text)) {
+                        in.putExtra("Id",b.getId()+"");
+                        if(!(b.getAuthor() ==null))
+                        in.putExtra("isbn", (b.getAuthor() !=null)? b.getAuthor().getFName() : "");
+                        in.putExtra("title", b.getTittle() + "");
+                        in.putExtra("subject", b.getSubject() + "");
+                       // in.putExtra("author","" + "");
+                        in.putExtra("publisher", (b.getPublisher() !=null)? b.getPublisher().getPublisherName(): "");
+                    }
+                }
+
+                startActivity(in);
+
                 return true;
             default:
         }

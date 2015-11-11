@@ -1,25 +1,26 @@
-package za.ac.cput.libapp.app.model;
+package za.ac.cput.libapp.app.domain.Impl;
+
+import java.io.Serializable;
 
 /**
- * Created by Yongama on 2015-05-19.
+ * Created by Yongama on 2015-04-25.
  */
-public class Copy {
-
-    private Long resId;
+public class Copy implements Serializable {
+    private Long Id;
     private String accessionNumber;
     private String datePurchased;
     private String copy_Notes;
     private Copy(){}
 
     public Copy(Builder builder){
-        resId = builder.resId;
         accessionNumber = builder.accessionNumber;
         datePurchased = builder.datePurchased;
         copy_Notes = builder.copy_Notes;
     }
 
-    public Long getResId() {
-        return resId;
+
+    public Long getId() {
+        return Id;
     }
 
     public String getAccessionNumber() {
@@ -36,7 +37,6 @@ public class Copy {
 
 
     public static class Builder{
-        private Long resId;
         private String accessionNumber;
         private String datePurchased;
         private String copy_Notes;
@@ -44,15 +44,12 @@ public class Copy {
         public Builder(String accessionNumber){
             this.accessionNumber = accessionNumber;
         }
-
-        public Builder resId(Long value){
-            this.resId = value;
-            return this;}
+/*
         public Builder accessionNumber(String value){
             this.accessionNumber = value;
             return this;
         }
-
+*/
         public Builder datePurchased(String value){
             this.datePurchased = value;
             return this;
